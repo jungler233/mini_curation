@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>荠菜 · 微策展 — Capsella bursa-pastoris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --page-bg: #0b1509;
+  --cream: #f3ead3;
+  --cream-warm: #ede0c1;
+  --cream-deep: #e5d5ac;
+  --ink: #1a1009;
+  --ink-mid: #3d2c12;
+  --ink-light: #5a4220;
+  --gold: #b08a34;
+  --gold-light: #c9a855;
+  --gold-pale: #e2c87a;
+  --forest: #253d21;
+  --forest-light: #3a5c34;
+  --terra: #7a3018;
+  --rule-color: #8a6e40;
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'EB Garamond', 'Georgia', serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--page-bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background-color: var(--page-bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 30%, #1a3016 0%, transparent 70%),
+    radial-gradient(ellipse 40% 80% at 20% 80%, #0f2010 0%, transparent 60%);
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem 6rem;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--cream));
+}
+
+.hero-acc {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.hero-zh {
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 18vw, 13rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.8rem;
+  text-shadow: 0 0 80px rgba(176,138,52,0.15);
+}
+
+.hero-la {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.7rem;
+}
+
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(243,234,211,0.45);
+  margin-bottom: 3rem;
+}
+
+.hero-rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0 auto 2rem;
+}
+
+.hero-desc {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(243,234,211,0.3);
+}
+
+/* ─── PANELS ─── */
+.panel {
+  background: var(--cream);
+  padding: 5rem max(2rem, calc((100% - 1060px) / 2));
+  position: relative;
+}
+
+.panel-alt {
+  background: var(--cream-warm);
+}
+
+.panel-dark {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--gold);
+  opacity: 0.35;
+  max-width: 120px;
+}
+
+/* ─── PLATE SECTION ─── */
+.plate-cols {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.plate-svg-wrap {
+  position: relative;
+}
+
+.plate-svg-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.plate-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--ink-light);
+  text-align: center;
+  margin-top: 1.2rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.taxon-card {
+  border: 0.5px solid var(--rule-color);
+  padding: 1.8rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.taxon-header {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 0.5px solid var(--cream-deep);
+}
+
+.taxon-table { width: 100%; border-collapse: collapse; }
+.taxon-table tr { border-bottom: 0.5px solid rgba(138, 110, 64, 0.15); }
+.taxon-table th {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  font-weight: 500;
+  width: 32px;
+  padding: 0.55rem 0.8rem 0.55rem 0;
+  vertical-align: top;
+}
+.taxon-table td {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  padding: 0.55rem 0;
+  font-style: normal;
+}
+.taxon-table td em {
+  font-style: italic;
+  color: var(--ink-mid);
+}
+
+.morph-block, .dist-block {
+  margin-bottom: 1.6rem;
+}
+.morph-header, .dist-header {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.morph-text, .dist-text {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+}
+
+.plate-detail-row {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 0.5px solid rgba(138,110,64,0.2);
+}
+.detail-item { flex: 1; }
+.detail-label {
+  font-size: 0.67rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.detail-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+/* ─── HISTORIA ─── */
+.historia-body {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.historia-body p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.82;
+  color: var(--ink-mid);
+  margin-bottom: 1.4rem;
+}
+.historia-body p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-style: italic;
+  float: left;
+  line-height: 0.78;
+  margin-right: 0.12em;
+  margin-top: 0.08em;
+  color: var(--gold);
+}
+
+/* ─── POETRY ─── */
+.poetry-section {
+  background: var(--forest);
+  padding: 5rem max(2rem, calc((100% - 1060px) / 2));
+}
+
+.poetry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.poem-block {
+  border-top: 0.5px solid rgba(201, 168, 85, 0.35);
+  padding-top: 2rem;
+}
+
+.poem-source {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  opacity: 0.7;
+  margin-bottom: 1.2rem;
+}
+
+.poem-zh {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.poem-en {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(243,234,211,0.5);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.poem-attr {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--gold-light);
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+
+/* ─── FOLK / ETHNOBOTANICA ─── */
+.folk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+.folk-entry { padding: 0; }
+.folk-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-pale);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.folk-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+.folk-text {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+}
+
+/* ─── CULINARIA ─── */
+.culinaria-section {
+  background: var(--cream-warm);
+}
+
+.dish-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 0.5px solid var(--rule-color);
+  margin-top: 2rem;
+}
+
+.dish-item {
+  padding: 2rem 1.5rem;
+  border-right: 0.5px solid rgba(138, 110, 64, 0.25);
+}
+.dish-item:last-child { border-right: none; }
+
+.dish-num {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: 0.8rem;
+}
+.dish-zh {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.04em;
+}
+.dish-note {
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.culinary-intro {
+  max-width: 680px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+}
+
+/* ─── MATERIA MEDICA ─── */
+.materia-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.materia-quote {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.8rem;
+}
+.materia-source {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  opacity: 0.65;
+}
+.materia-list {
+  list-style: none;
+  border-top: 0.5px solid rgba(201,168,85,0.3);
+  padding-top: 1.2rem;
+}
+.materia-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 0.5px solid rgba(243,234,211,0.08);
+  font-family: var(--font-body);
+}
+.materia-list .ml-zh {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--cream);
+  min-width: 70px;
+}
+.materia-list .ml-en {
+  font-size: 0.82rem;
+  color: rgba(243,234,211,0.5);
+  font-style: italic;
+}
+
+/* ─── FOOTER ─── */
+.colophon {
+  background: var(--page-bg);
+  padding: 4rem max(2rem, calc((100% - 1060px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-top: 0.5px solid rgba(176, 138, 52, 0.15);
+}
+.colophon-left {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(243,234,211,0.25);
+  line-height: 1.6;
+}
+.colophon-right {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(176,138,52,0.35);
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 780px) {
+  .plate-cols { grid-template-columns: 1fr; }
+  .poetry-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .folk-grid { grid-template-columns: 1fr; }
+  .dish-list { grid-template-columns: 1fr 1fr; }
+  .dish-item { border-bottom: 0.5px solid rgba(138,110,64,0.25); }
+  .materia-inner { grid-template-columns: 1fr; }
+  .plate-svg-wrap { max-width: 240px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <p class="hero-acc">CAP · 001 — BRASSICACEAE</p>
+  <h1 class="hero-zh">荠</h1>
+  <p class="hero-la">Capsella bursa-pastoris (L.) Medik., 1792</p>
+  <p class="hero-sub">十字花科 · 一年或越年生草本 · 野生</p>
+  <div class="hero-rule"></div>
+  <p class="hero-desc">野地采集 · 中国东部沿海 · 早春</p>
+</header>
+
+<!-- ═══ PLATE I — BOTANICAL ═══ -->
+<section class="panel">
+  <p class="section-label">标本图版 Plate I</p>
+  <div class="plate-cols">
+
+    <!-- SVG BOTANICAL ILLUSTRATION -->
+    <div class="plate-svg-wrap">
+      <svg viewBox="0 0 260 530" xmlns="http://www.w3.org/2000/svg" aria-label="荠菜植物标本图绘">
+        <title>荠菜 Capsella bursa-pastoris — 植株全形</title>
+        <desc>线描图版，展示荠菜完整植株：根系、基生叶莲座、茎、茎生叶、角果及顶部花序。</desc>
+
+        <g stroke="#2e1c0c" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+          <!-- ROOTS -->
+          <path d="M 130 462 Q 129 475 127 490 Q 124 507 121 520" stroke-width="1.6"/>
+          <path d="M 126 488 Q 114 494 106 502" stroke-width="0.9"/>
+          <path d="M 123 500 Q 110 505 102 513" stroke-width="0.9"/>
+          <path d="M 124 510 Q 136 515 148 517" stroke-width="0.9"/>
+          <path d="M 109 499 Q 103 497 98 496" stroke-width="0.45"/>
+          <path d="M 106 507 Q 100 506 95 505" stroke-width="0.45"/>
+          <path d="M 144 516 Q 149 518 153 519" stroke-width="0.45"/>
+
+          <!-- MAIN STEM -->
+          <path d="M 130 462 C 131 405 132 325 131 245 C 130 178 129 122 130 70" stroke-width="1.4"/>
+
+          <!-- BASAL LEAVES — 5 leaves, radial rosette -->
+          <!-- Each g: base at (130,462), leaf extends 60px in chosen direction -->
+
+          <!-- Leaf 1: WEST -->
+          <g transform="translate(130,462) rotate(0)">
+            <path d="M 0 0 C -10 -7 -28 -10 -43 -9 C -52 -7 -58 -3 -60 0 C -58 3 -52 7 -43 9 C -28 10 -10 7 0 0 Z" stroke-width="0.95"/>
+            <line x1="0" y1="0" x2="-58" y2="0" stroke-width="0.5"/>
+            <line x1="-16" y1="-0.5" x2="-13" y2="-8" stroke-width="0.35"/>
+            <line x1="-32" y1="-1.5" x2="-29" y2="-9" stroke-width="0.35"/>
+            <line x1="-46" y1="-1" x2="-43" y2="-7" stroke-width="0.35"/>
+            <line x1="-16" y1="0.5" x2="-13" y2="8" stroke-width="0.35"/>
+            <line x1="-32" y1="1.5" x2="-29" y2="9" stroke-width="0.35"/>
+            <line x1="-46" y1="1" x2="-43" y2="7" stroke-width="0.35"/>
+          </g>
+
+          <!-- Leaf 2: NW (rotate 45° CW moves tip upper-left) -->
+          <g transform="translate(130,462) rotate(45)">
+            <path d="M 0 0 C -10 -7 -28 -10 -43 -9 C -52 -7 -58 -3 -60 0 C -58 3 -52 7 -43 9 C -28 10 -10 7 0 0 Z" stroke-width="0.95"/>
+            <line x1="0" y1="0" x2="-58" y2="0" stroke-width="0.5"/>
+            <line x1="-16" y1="-0.5" x2="-13" y2="-8" stroke-width="0.35"/>
+            <line x1="-34" y1="-1.5" x2="-31" y2="-9" stroke-width="0.35"/>
+            <line x1="-16" y1="0.5" x2="-13" y2="8" stroke-width="0.35"/>
+            <line x1="-34" y1="1.5" x2="-31" y2="9" stroke-width="0.35"/>
+          </g>
+
+          <!-- Leaf 3: SW (rotate -45°) -->
+          <g transform="translate(130,462) rotate(-45)">
+            <path d="M 0 0 C -10 -7 -28 -10 -43 -9 C -52 -7 -58 -3 -60 0 C -58 3 -52 7 -43 9 C -28 10 -10 7 0 0 Z" stroke-width="0.95"/>
+            <line x1="0" y1="0" x2="-58" y2="0" stroke-width="0.5"/>
+            <line x1="-16" y1="-0.5" x2="-13" y2="-8" stroke-width="0.35"/>
+            <line x1="-34" y1="-1.5" x2="-31" y2="-9" stroke-width="0.35"/>
+            <line x1="-16" y1="0.5" x2="-13" y2="8" stroke-width="0.35"/>
+            <line x1="-34" y1="1.5" x2="-31" y2="9" stroke-width="0.35"/>
+          </g>
+
+          <!-- Leaf 4: ENE / upper-right (rotate 155°) -->
+          <g transform="translate(130,462) rotate(155)">
+            <path d="M 0 0 C -10 -7 -28 -10 -43 -9 C -52 -7 -58 -3 -60 0 C -58 3 -52 7 -43 9 C -28 10 -10 7 0 0 Z" stroke-width="0.95"/>
+            <line x1="0" y1="0" x2="-58" y2="0" stroke-width="0.5"/>
+            <line x1="-18" y1="-0.5" x2="-15" y2="-7" stroke-width="0.35"/>
+            <line x1="-36" y1="-1.5" x2="-33" y2="-8" stroke-width="0.35"/>
+            <line x1="-18" y1="0.5" x2="-15" y2="7" stroke-width="0.35"/>
+            <line x1="-36" y1="1.5" x2="-33" y2="8" stroke-width="0.35"/>
+          </g>
+
+          <!-- Leaf 5: SE / lower-right (rotate -155°) -->
+          <g transform="translate(130,462) rotate(-155)">
+            <path d="M 0 0 C -10 -7 -28 -10 -43 -9 C -52 -7 -58 -3 -60 0 C -58 3 -52 7 -43 9 C -28 10 -10 7 0 0 Z" stroke-width="0.95"/>
+            <line x1="0" y1="0" x2="-58" y2="0" stroke-width="0.5"/>
+            <line x1="-18" y1="-0.5" x2="-15" y2="-7" stroke-width="0.35"/>
+            <line x1="-36" y1="-1.5" x2="-33" y2="-8" stroke-width="0.35"/>
+            <line x1="-18" y1="0.5" x2="-15" y2="7" stroke-width="0.35"/>
+            <line x1="-36" y1="1.5" x2="-33" y2="8" stroke-width="0.35"/>
+          </g>
+
+          <!-- STEM LEAVES (smaller, clasping) -->
+          <g transform="translate(131,390) rotate(155)">
+            <path d="M 0 0 C -5 -4 -15 -6 -23 -5 C -29 -4 -33 -2 -34 0 C -33 2 -29 4 -23 5 C -15 6 -5 4 0 0 Z" stroke-width="0.85"/>
+            <line x1="0" y1="0" x2="-33" y2="0" stroke-width="0.4"/>
+          </g>
+          <g transform="translate(131,315) rotate(25)">
+            <path d="M 0 0 C -5 -4 -14 -6 -21 -5 C -27 -4 -30 -2 -31 0 C -30 2 -27 4 -21 5 C -14 6 -5 4 0 0 Z" stroke-width="0.85"/>
+            <line x1="0" y1="0" x2="-30" y2="0" stroke-width="0.4"/>
+          </g>
+          <g transform="translate(131,250) rotate(155)">
+            <path d="M 0 0 C -4 -3 -12 -5 -18 -4 C -23 -3 -26 -2 -27 0 C -26 2 -23 3 -18 4 C -12 5 -4 3 0 0 Z" stroke-width="0.75"/>
+            <line x1="0" y1="0" x2="-26" y2="0" stroke-width="0.35"/>
+          </g>
+
+          <!-- SILICLES — obcordate pods on pedicels, alternating sides -->
+          <!-- Template silicle: attachment at (0,0), notch (apex) at (0,-15) -->
+          <!-- Rows from y≈305 up to y≈150 -->
+
+          <!-- Silicle macro: pedicel + obcordate shape + midrib -->
+          <!-- y=305, left -->
+          <line x1="131" y1="305" x2="107" y2="300" stroke-width="0.75"/>
+          <path d="M 107 300 C 102 298 99 294 99 289 C 99 285 101 283 104 283 C 105 282 107 281 107 282 C 107 281 109 282 110 283 C 113 283 115 285 115 289 C 115 294 112 298 107 300 Z" stroke-width="0.75"/>
+          <line x1="107" y1="283" x2="107" y2="298" stroke-width="0.32"/>
+
+          <!-- y=285, right -->
+          <line x1="131" y1="285" x2="155" y2="280" stroke-width="0.75"/>
+          <path d="M 155 280 C 150 278 147 274 147 269 C 147 265 149 263 152 263 C 153 262 155 261 155 262 C 155 261 157 262 158 263 C 161 263 163 265 163 269 C 163 274 160 278 155 280 Z" stroke-width="0.75"/>
+          <line x1="155" y1="263" x2="155" y2="278" stroke-width="0.32"/>
+
+          <!-- y=263, left -->
+          <line x1="131" y1="263" x2="107" y2="258" stroke-width="0.75"/>
+          <path d="M 107 258 C 102 256 99 252 99 247 C 99 243 101 241 104 241 C 105 240 107 239 107 240 C 107 239 109 240 110 241 C 113 241 115 243 115 247 C 115 252 112 256 107 258 Z" stroke-width="0.75"/>
+          <line x1="107" y1="241" x2="107" y2="256" stroke-width="0.32"/>
+
+          <!-- y=241, right -->
+          <line x1="131" y1="241" x2="155" y2="236" stroke-width="0.75"/>
+          <path d="M 155 236 C 150 234 147 230 147 225 C 147 221 149 219 152 219 C 153 218 155 217 155 218 C 155 217 157 218 158 219 C 161 219 163 221 163 225 C 163 230 160 234 155 236 Z" stroke-width="0.75"/>
+          <line x1="155" y1="219" x2="155" y2="234" stroke-width="0.32"/>
+
+          <!-- y=220, left -->
+          <line x1="131" y1="220" x2="109" y2="215" stroke-width="0.75"/>
+          <path d="M 109 215 C 104 213 101 209 101 204 C 101 200 103 198 106 198 C 107 197 109 196 109 197 C 109 196 111 197 112 198 C 115 198 117 200 117 204 C 117 209 114 213 109 215 Z" stroke-width="0.75"/>
+          <line x1="109" y1="198" x2="109" y2="213" stroke-width="0.32"/>
+
+          <!-- y=200, right -->
+          <line x1="131" y1="200" x2="153" y2="195" stroke-width="0.75"/>
+          <path d="M 153 195 C 148 193 145 189 145 184 C 145 180 147 178 150 178 C 151 177 153 176 153 177 C 153 176 155 177 156 178 C 159 178 161 180 161 184 C 161 189 158 193 153 195 Z" stroke-width="0.75"/>
+          <line x1="153" y1="178" x2="153" y2="193" stroke-width="0.32"/>
+
+          <!-- y=178, left -->
+          <line x1="131" y1="178" x2="110" y2="173" stroke-width="0.75"/>
+          <path d="M 110 173 C 105 171 102 167 102 162 C 102 158 104 156 107 156 C 108 155 110 154 110 155 C 110 154 112 155 113 156 C 116 156 118 158 118 162 C 118 167 115 171 110 173 Z" stroke-width="0.75"/>
+          <line x1="110" y1="156" x2="110" y2="171" stroke-width="0.32"/>
+
+          <!-- y=156, right -->
+          <line x1="131" y1="156" x2="152" y2="151" stroke-width="0.75"/>
+          <path d="M 152 151 C 147 149 144 145 144 140 C 144 136 146 134 149 134 C 150 133 152 132 152 133 C 152 132 154 133 155 134 C 158 134 160 136 160 140 C 160 145 157 149 152 151 Z" stroke-width="0.75"/>
+          <line x1="152" y1="134" x2="152" y2="149" stroke-width="0.32"/>
+
+          <!-- FLOWERS (raceme apex) — pedicels + cross-shaped flowers -->
+          <line x1="130" y1="135" x2="118" y2="128" stroke-width="0.7"/>
+          <ellipse cx="118" cy="124" rx="3" ry="5" stroke-width="0.7"/>
+          <ellipse cx="118" cy="124" rx="5" ry="3" stroke-width="0.7"/>
+          <circle cx="118" cy="124" r="1.2" stroke-width="0.5"/>
+
+          <line x1="130" y1="122" x2="143" y2="115" stroke-width="0.7"/>
+          <ellipse cx="143" cy="111" rx="3" ry="5" stroke-width="0.7"/>
+          <ellipse cx="143" cy="111" rx="5" ry="3" stroke-width="0.7"/>
+          <circle cx="143" cy="111" r="1.2" stroke-width="0.5"/>
+
+          <line x1="130" y1="109" x2="119" y2="102" stroke-width="0.7"/>
+          <ellipse cx="119" cy="98" rx="3" ry="5" stroke-width="0.7"/>
+          <ellipse cx="119" cy="98" rx="5" ry="3" stroke-width="0.7"/>
+          <circle cx="119" cy="98" r="1.2" stroke-width="0.5"/>
+
+          <line x1="130" y1="97" x2="141" y2="90" stroke-width="0.7"/>
+          <ellipse cx="141" cy="86" rx="2.8" ry="4.5" stroke-width="0.7"/>
+          <ellipse cx="141" cy="86" rx="4.5" ry="2.8" stroke-width="0.7"/>
+          <circle cx="141" cy="86" r="1" stroke-width="0.5"/>
+
+          <!-- Terminal bud -->
+          <line x1="130" y1="85" x2="130" y2="70" stroke-width="0.9"/>
+          <ellipse cx="130" cy="65" rx="2.8" ry="5" stroke-width="0.75"/>
+          <ellipse cx="130" cy="65" rx="5" ry="2.8" stroke-width="0.75"/>
+          <circle cx="130" cy="65" r="1.2" stroke-width="0.55"/>
+
+          <!-- ANNOTATION LEADERS (dashed) -->
+          <line x1="160" y1="155" x2="198" y2="160" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.5"/>
+          <line x1="145" y1="100" x2="198" y2="95" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.5"/>
+          <line x1="73" y1="420" x2="30" y2="415" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.5"/>
+
+        </g>
+
+        <!-- Annotation labels -->
+        <text x="202" y="163" font-family="'EB Garamond', serif" font-size="9.5" fill="#5a4220" font-style="italic">b. silicle</text>
+        <text x="202" y="98" font-family="'EB Garamond', serif" font-size="9.5" fill="#5a4220" font-style="italic">c. flower</text>
+        <text x="4" y="418" font-family="'EB Garamond', serif" font-size="9.5" fill="#5a4220" font-style="italic">a. habit</text>
+
+        <!-- Scale bar -->
+        <line x1="102" y1="510" x2="158" y2="510" stroke="#5a4220" stroke-width="0.75"/>
+        <line x1="102" y1="507" x2="102" y2="513" stroke="#5a4220" stroke-width="0.75"/>
+        <line x1="158" y1="507" x2="158" y2="513" stroke="#5a4220" stroke-width="0.75"/>
+        <text x="130" y="524" font-family="'EB Garamond', serif" font-size="8.5" fill="#5a4220" text-anchor="middle" font-style="italic">5 cm</text>
+
+      </svg>
+
+      <p class="plate-caption">图 Fig. 1 — <em>Capsella bursa-pastoris</em><br/>a. 植株全形 habit &nbsp;·&nbsp; b. 角果 silicle &nbsp;·&nbsp; c. 花 flower</p>
+    </div>
+
+    <!-- TAXONOMY & MORPHOLOGY -->
+    <div>
+      <div class="taxon-card">
+        <div class="taxon-header">分类档案 Taxonomic Record</div>
+        <table class="taxon-table">
+          <tr><th>界</th><td>Plantae &nbsp;<span style="color:#8a6e40;font-size:0.85em;">植物界</span></td></tr>
+          <tr><th>纲</th><td>Magnoliopsida &nbsp;<span style="color:#8a6e40;font-size:0.85em;">双子叶植物纲</span></td></tr>
+          <tr><th>目</th><td>Brassicales &nbsp;<span style="color:#8a6e40;font-size:0.85em;">十字花目</span></td></tr>
+          <tr><th>科</th><td>Brassicaceae &nbsp;<span style="color:#8a6e40;font-size:0.85em;">十字花科</span></td></tr>
+          <tr><th>属</th><td>Capsella &nbsp;<span style="color:#8a6e40;font-size:0.85em;">荠属</span></td></tr>
+          <tr><th>种</th><td><em>C. bursa-pastoris</em></td></tr>
+          <tr><th>命名</th><td>Medikus, 1792</td></tr>
+        </table>
+      </div>
+
+      <div class="morph-block">
+        <div class="morph-header">形态特征 Morphology</div>
+        <p class="morph-text">一年或越年生草本，高10–50厘米。基生叶莲座状，大头羽裂；茎生叶抱茎，基部箭形或耳形。总状花序顶生，花白色，十字形，花瓣约2毫米。果实为角果，倒三角形或心形（「荠」字本义即指此形），6–9毫米宽，是识别本种的最显著特征。</p>
+      </div>
+
+      <div class="dist-block">
+        <div class="dist-header">分布 Distribution</div>
+        <p class="morph-text">世界性分布，见于欧亚大陆、北非及南北美洲。在中国，自平原至海拔3500米山区均有生长，尤以农田边缘、路旁、湿润草地最为常见。早春最盛，白花星点，是最早宣告春讯的野草之一。</p>
+      </div>
+
+      <div class="plate-detail-row">
+        <div class="detail-item">
+          <span class="detail-label">花期</span>
+          <span class="detail-value">二—五月</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">别名</span>
+          <span class="detail-value">护生草、菱角菜</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">英名</span>
+          <span class="detail-value" style="font-size:1.2rem;">Shepherd's Purse</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HISTORIA ═══ -->
+<section class="panel panel-alt">
+  <p class="section-label">文化史略 Historia Culturalis</p>
+  <div class="historia-body">
+    <p>荠菜进入中国文字的历史，至少有三千年。《诗经·邶风·谷风》中留下了最早的记录：「谁谓荼苦，其甘如荠。」在那个没有精炼糖的时代，荠菜的清甜竟成了一种极致的温柔。这句话从此成为汉语中最古老的关于食物的隐喻——它说的是苦尽甘来，说的是失去中的感恩，说的是一个被遗弃的女人对旧日生活的眷念。</p>
+    <p>此后，荠菜穿越了整个中国文学史。它出现在苏东坡流放黄州时的炊烟里，出现在陆游寒冬诗稿的餐桌上，出现在辛弃疾词中一幅春日溪畔的小景里。它从不是主角，却总在那里——那个颠沛流离、簪缨折断的岁月里，最平凡也最可靠的滋味。</p>
+    <p>荠菜没有牡丹的富贵，没有梅花的孤傲，没有菊花的隐逸。它生于田间陌头，无人播种，自行繁衍。它的名字来自它的种荚——那颗小小的倒三角形「荠」，像牧人的皮囊，像春天借给田野的一枚印章。拉丁名 <em>bursa pastoris</em>，「牧羊人的荷包」，与「荠」字同义，这是东西方植物学者罕见的不谋而合。</p>
+  </div>
+</section>
+
+<!-- ═══ POETRY ═══ -->
+<section class="poetry-section">
+  <p class="section-label" style="color:var(--gold-light);border-bottom-color:rgba(201,168,85,0.2);">诗文选录 Literary Specimens</p>
+  <div class="poetry-grid">
+
+    <div class="poem-block">
+      <p class="poem-source">《诗经 · 邶风 · 谷风》&nbsp;· 约公元前800年</p>
+      <p class="poem-zh">谁谓荼苦，<br/>其甘如荠。</p>
+      <p class="poem-en">Who says the bitter herb is bitter?<br/>Its sweetness is as shepherd's purse.</p>
+      <p class="poem-attr">中国最早的诗歌总集 · 首见荠菜之名</p>
+    </div>
+
+    <div class="poem-block">
+      <p class="poem-source">辛弃疾《鹧鸪天·代人赋》&nbsp;· 1140—1207</p>
+      <p class="poem-zh">城中桃李愁风雨，<br/>春在溪头荠菜花。</p>
+      <p class="poem-en">In the city, peach and plum<br/>dread the wind and rain — <br/>but spring lives on, in shepherd's purse<br/>flowering by the stream.</p>
+      <p class="poem-attr">南宋词人 · 寄志山河</p>
+    </div>
+
+    <div class="poem-block">
+      <p class="poem-source">陆游《食荠》&nbsp;· 1125—1210</p>
+      <p class="poem-zh">残雪初消荠满园，<br/>糁羹珍美胜羔豚。</p>
+      <p class="poem-en">Snow barely melted,<br/>shepherd's purse fills the garden —<br/>its gruel more precious<br/>than lamb or suckling pig.</p>
+      <p class="poem-attr">南宋诗人 · 一生嗜荠</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ETHNOBOTANICA ═══ -->
+<section class="panel">
+  <p class="section-label">民俗档案 Ethnobotanica</p>
+  <div class="folk-grid">
+
+    <div class="folk-entry">
+      <p class="folk-num">壹</p>
+      <p class="folk-title">三月三，荠菜当灵丹</p>
+      <p class="folk-text">农历三月初三，上巳节，亦是民间的「荠菜节」。家家户户采荠菜与鸡蛋同煮，据说能治头痛、明目、辟邪。这一习俗从汉代延续至今，在江南、湖广一带尤为盛行。荠菜煮熟后水呈淡黄，蛋壳染色，有春天独特的草木香气。</p>
+    </div>
+
+    <div class="folk-entry">
+      <p class="folk-num">贰</p>
+      <p class="folk-title">踏青与采野</p>
+      <p class="folk-text">在农业社会，早春采荠既是生计也是礼俗。正月末二月初，寒气未尽，荠菜已绿，是第一批可食的野蔬。携篮入田，弯腰采摘，本身就是一种与土地的重新接触——冬日封闭后，人与自然的第一次对话，往往就以荠菜开场。</p>
+    </div>
+
+    <div class="folk-entry">
+      <p class="folk-num">叁</p>
+      <p class="folk-title">护生之名</p>
+      <p class="folk-text">荠菜别名「护生草」，源自佛教素食传统：以荠菜代肉，护卫生灵。丰子恺曾作《护生画集》，以温柔笔触描绘众生，荠菜亦在其中——它的形象从来是谦卑的、慈悲的，长在最不起眼的地方，哺育最需要它的人。</p>
+    </div>
+
+    <div class="folk-entry">
+      <p class="folk-num">肆</p>
+      <p class="folk-title">东西方的共同命名</p>
+      <p class="folk-text">荠菜倒三角形的角果，形如荷包或皮囊，中文「荠」字即含此形义。拉丁名 <em>bursa pastoris</em> 亦意为「牧羊人的荷包」。不同文明、不同语言，独立望见同一株野草，竟写下了几乎相同的比喻——这是植物学史上最动人的巧合之一。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CULINARIA ═══ -->
+<section class="panel culinaria-section">
+  <p class="section-label">烹饪档案 Culinaria</p>
+  <p class="culinary-intro">荠菜入馔，以「鲜」字为本。其清甜微苦、带有独特的春日草木香，最宜搭配猪肉与豆腐。江南家庭视其为年年必待的春日风物，无荠菜不成春。</p>
+  <div class="dish-list">
+    <div class="dish-item">
+      <p class="dish-num">No. 01</p>
+      <p class="dish-zh">荠菜水饺</p>
+      <p class="dish-note">与猪肉同剁为馅，皮薄馅厚，为最经典之制。清代已见记载。</p>
+    </div>
+    <div class="dish-item">
+      <p class="dish-num">No. 02</p>
+      <p class="dish-zh">荠菜馄饨</p>
+      <p class="dish-note">上海、苏州一带春节前后的传统食物，鲜汤浇灌，一碗见春。</p>
+    </div>
+    <div class="dish-item">
+      <p class="dish-num">No. 03</p>
+      <p class="dish-zh">荠菜豆腐羹</p>
+      <p class="dish-note">陆游诗中「糁羹」之原型。豆腐嫩滑，荠菜鲜翠，以水淀粉勾芡。</p>
+    </div>
+    <div class="dish-item">
+      <p class="dish-num">No. 04</p>
+      <p class="dish-zh">清炒荠菜</p>
+      <p class="dish-note">仅以蒜片与盐，大火翻炒，保留野蔬最本真的气息。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MATERIA MEDICA ═══ -->
+<section class="panel panel-dark">
+  <p class="section-label" style="color:var(--gold-light);">本草记录 Materia Medica</p>
+  <div class="materia-inner">
+    <div>
+      <p class="materia-quote">「荠，甘，平，无毒。明目益胃。」</p>
+      <p class="materia-source">李时珍《本草纲目》&nbsp;·&nbsp; 明 · 1596年</p>
+    </div>
+    <div>
+      <ul class="materia-list">
+        <li><span class="ml-zh">明目</span><span class="ml-en">brightens vision; traditional ophthalmic use</span></li>
+        <li><span class="ml-zh">止血</span><span class="ml-en">hemostatic properties; flavonoid compounds</span></li>
+        <li><span class="ml-zh">利尿</span><span class="ml-en">diuretic effect; used in folk medicine</span></li>
+        <li><span class="ml-zh">健脾</span><span class="ml-en">strengthens digestion; rich in vitamins A &amp; C</span></li>
+        <li><span class="ml-zh">降压</span><span class="ml-en">antihypertensive; modern pharmacological study</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COLOPHON ═══ -->
+<footer class="colophon">
+  <div class="colophon-left">
+    本图版据野外观察与文献绘制<br/>
+    图文 · 微策展小辑 · 荠菜专题
+  </div>
+  <div class="colophon-right">
+    Capsella bursa-pastoris<br/>
+    Micro-Curation · CAP.001<br/>
+    Brassicaceae
+  </div>
+</footer>
+
+</body>
+</html>
